@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    // 파이썬 방식 (requests 라이브러리 활용)
+    // import requests
+    // response = requests.get('서버 url')
+    // data = response.json()
+    // JS에서는 Axios 활용
+
+    // 1.
+    const promiseObj = axios({
+      method: 'get',
+      url: 'https://api.thecatapi.com/v1/images/search',
+    })
+
+    // console.log(promiseObj) // Promise object
+
+    // 일반적으로 then catch의 콜백함수는 화살표 함수 사용
+    // 한 줄로 체이닝 되어있지만 가독성을 위해 내려쓰기 및 들여쓰기 사용
+    promiseObj
+      .then((reseponse) => {
+        console.log(reseponse)
+        console.log(response.data) // response 객체의 data 속성으로 접근 [url(추출할 데이터)이 담겨있는 배열]
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+    console.log('안녕하세요')
+    // 안녕하세요가 먼저 출력된다
+    // Axios를 이용한 비동기 통신이기 때문!
+
+    // 2. 한 줄로 바꾼 표현식(앞으로 이 방식을 이용할 예정)
+    axios({
+      method: 'get',
+      url: 'https://api.thecatapi.com/v1/images/search',
+    })
+      .then((reseponse) => {
+        console.log(reseponse)
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  </script>
+
+</body>
+
+</html>

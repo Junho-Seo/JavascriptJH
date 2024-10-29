@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">버튼</button>
+
+  <script>
+    // 1. 버튼 선택
+    const btn = document.querySelector('#btn')
+
+    // 2. 콜백 함수
+    const detectClick = function (event) {
+      console.log(event)  // PointerEvent
+      console.log(evnet.currentTarget)  // <button id="btn">버튼</button>
+      console.log(this)  // <button id="btn">버튼</button>
+      // 여기서 this는 currnetTarget을 가리킨다!
+      console.log(evnet.target)  // <button id="btn">버튼</button>
+      // currentTarget과 target과의 차이는 다음챕터에서 다룬다(버블링)
+    }
+
+    // 3. 버튼에 이벤트 핸들러를 부착
+    btn.addEventListener('click', detectClick)
+
+  </script>
+</body>
+
+</html>
